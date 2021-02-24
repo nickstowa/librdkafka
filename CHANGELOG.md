@@ -1,3 +1,26 @@
+# librdkafka v1.7.0
+
+librdkafka v1.7.0 is feature release:
+
+ * [KIP-360](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=89068820) - Improve reliability of transactional producer
+
+
+## Fixes
+
+### General fixes
+
+### Transactional Producer fixes
+
+ * KIP-360: Fatal Idempotent producer errors are now recoverable by the
+   transactional producer and will raise a `txn_requires_abort()` error.
+
+### Producer fixes
+
+
+### Consumer fixes
+
+
+
 # librdkafka v1.6.1
 
 librdkafka v1.6.1 is a maintenance release.

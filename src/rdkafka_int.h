@@ -389,6 +389,10 @@ struct rd_kafka_s {
                                                           *   take action when
                                                           *   the broker state
                                                           *   changes. */
+                rd_bool_t txn_requires_epoch_bump; /**< Coordinator epoch bump
+                                                    *   required to recover from
+                                                    *   idempotent producer
+                                                    *   fatal error. */
 
                 /**< Blocking transactional API application call
                  *   currently being handled, its state, reply queue and how

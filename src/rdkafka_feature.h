@@ -75,10 +75,8 @@
 /* >= 1.0.0: SaslAuthenticateRequest */
 #define RD_KAFKA_FEATURE_SASL_AUTH_REQ 0x1000
 
-#if FIXME /* Need to sort out with kafka-core how to handle this and KIP-447 */
 /* >= 2.4.0: KIP-360 (improve EOS producer error handling) */
 #define RD_KAFKA_FEATURE_KIP360 0x2000
-#endif
 
 /* Unit-test mock broker: broker supports everything.
  * Should be used with RD_KAFKA_FEATURE_ALL, but not be included in bitmask */

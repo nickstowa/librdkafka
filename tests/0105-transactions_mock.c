@@ -357,20 +357,17 @@ static void do_test_txn_fatal_idempo_errors (void) {
 
         /* Commit the transaction, should fail */
         error = rd_kafka_commit_transaction(rk, -1);
+
         TEST_ASSERT(error != NULL, "Expected commit_transaction() to fail");
 
         TEST_SAY("commit_transaction() failed (expectedly): %s\n",
                  rd_kafka_error_string(error));
 
-        TEST_ASSERT(rd_kafka_error_is_fatal(error),
-                    "Expected fatal error (pre-KIP360)");
-        TEST_ASSERT(!rd_kafka_error_is_retriable(error),
-                    "Did not expect retriable error");
-        TEST_ASSERT(!rd_kafka_error_txn_requires_abort(error),
-                    "Did not expect txn_requires_abort");
+        TEST_ASSERT(!rd_kafka_error_is_fatal(error),
+                    "Did not expect fatal error");
+        TEST_ASSERT(rd_kafka_error_txn_requires_abort(error),
+                    "Expected abortable error");
         rd_kafka_error_destroy(error);
-
-        goto prekip360_done;
 
         /* Abort the transaction */
         TEST_CALL_ERROR__(rd_kafka_abort_transaction(rk, -1));
@@ -387,7 +384,6 @@ static void do_test_txn_fatal_idempo_errors (void) {
 
         TEST_CALL_ERROR__(rd_kafka_commit_transaction(rk, -1));
 
- prekip360_done:
         /* All done */
 
         rd_kafka_destroy(rk);
