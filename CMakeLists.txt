@@ -12,7 +12,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/packagin
 # This option doesn't affect build in fact, only C code
 # (see 'rd_kafka_version_str'). In CMake the build type feature usually used
 # (like Debug, Release, etc.).
-option(WITHOUT_OPTIMIZATION "Disable optimization" OFF)
+option(WITHOUT_OPTIMIZATION "Disable optimization" ON)
 
 option(ENABLE_DEVEL "Enable development asserts, checks, etc" OFF)
 option(ENABLE_REFCNT_DEBUG "Enable refcnt debugging" OFF)
@@ -147,7 +147,7 @@ endif()
 
 # LZ4 {
 option(ENABLE_LZ4_EXT "Enable external LZ4 library support" ON)
-set(WITH_LZ4_EXT OFF)
+set(WITH_LZ4_EXT ON)
 if(ENABLE_LZ4_EXT)
   find_package(LZ4)
   if(LZ4_FOUND)
